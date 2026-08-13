@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Marhaba Grill - Online Food Ordering System</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#a33818",
+            "primary-fixed": "#ffdbd1",
+            surface: "#fef8f1",
+            "surface-container": "#f3ede6",
+            "on-surface": "#1d1b17",
+            "on-surface-variant": "#58423c"
+          },
+          spacing: {
+            "margin-mobile": "20px"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#fef8f1] font-sans text-[#1d1b17] min-h-screen antialiased selection:bg-[#ffdbd1]">
+
+  <!-- Main View Container -->
+  <div id="view-content" class="min-h-screen"></div>
+
+  <!-- Item Modal Container -->
+  <div id="item-modal-container"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] px-4 py-2.5 rounded-full shadow-lg text-sm font-semibold transition-all duration-300 opacity-0 pointer-events-none translate-y-4"></div>
+
+  <!-- Bottom Floating Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 glass-header border-t border-[#e7e2db] pb-safe">
+    <div class="h-16 px-6 flex items-center justify-around max-w-lg mx-auto">
+      
+      <button data-nav="home" class="flex flex-col items-center gap-1 text-[#a33818] transition-colors">
+        <span class="material-symbols-outlined text-2xl">home</span>
+        <span class="text-[10px] font-bold">Home</span>
+      </button>
+
+      <button data-nav="menu" class="flex flex-col items-center gap-1 text-[#5c5c5c] hover:text-[#a33818] transition-colors">
+        <span class="material-symbols-outlined text-2xl">restaurant_menu</span>
+        <span class="text-[10px] font-bold">Menu</span>
+      </button>
+
+      <button data-nav="cart" class="flex flex-col items-center gap-1 text-[#5c5c5c] hover:text-[#a33818] transition-colors relative">
+        <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+        <span class="text-[10px] font-bold">Cart</span>
+        <span class="cart-badge absolute -top-1 -right-2 bg-[#a33818] text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#fef8f1] hidden">0</span>
+      </button>
+
+      <button data-nav="order-status" class="flex flex-col items-center gap-1 text-[#5c5c5c] hover:text-[#a33818] transition-colors">
+        <span class="material-symbols-outlined text-2xl">local_shipping</span>
+        <span class="text-[10px] font-bold">Tracker</span>
+      </button>
+
+      <button data-nav="rewards" class="flex flex-col items-center gap-1 text-[#5c5c5c] hover:text-[#a33818] transition-colors">
+        <span class="material-symbols-outlined text-2xl">stars</span>
+        <span class="text-[10px] font-bold">Rewards</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

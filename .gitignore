@@ -1,0 +1,17 @@
+# Sensitive keys & credentials
+openai-api-key.txt
+recovery-codes.txt
+*.key
+*.pem
+.env
+.env.*
+
+# Binaries, installers & archives
+*.exe
+*.zip
+*.msi
+*.iso
+
+# OS & IDE
+desktop.ini
+.DS_Store
