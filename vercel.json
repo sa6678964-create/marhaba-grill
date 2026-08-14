@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "buildCommand": "npm install",
+  "installCommand": "npm install",
+  "env": {
+    "SUPABASE_URL": {
+      "description": "Supabase project URL",
+      "required": false
+    },
+    "SUPABASE_ANON_KEY": {
+      "description": "Supabase anonymous/public key",
+      "required": false
+    },
+    "SUPABASE_SERVICE_ROLE_KEY": {
+      "description": "Supabase service role key (server-side only) - KEEP SECURE",
+      "required": true
+    },
+    "STRIPE_SECRET_KEY": {
+      "description": "Stripe secret key for TEST MODE (server-side only) - KEEP SECURE",
+      "required": true
+    },
+    "STRIPE_WEBHOOK_SECRET": {
+      "description": "Stripe webhook signing secret (server-side only) - KEEP SECURE",
+      "required": true
+    },
+    "ADMIN_JWT_SECRET": {
+      "description": "Secret key for signing admin JWT tokens (server-side only) - KEEP SECURE",
+      "required": true
+    },
+    "DEFAULT_DELIVERY_FEE": {
+      "description": "Default delivery fee in EUR",
+      "required": false
+    },
+    "CURRENCY": {
+      "description": "Currency code (e.g., eur, usd)",
+      "required": false
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level: debug, info, warn, error",
+      "required": false
+    },
+    "RATE_LIMIT_ORDERS_PER_MINUTE": {
+      "description": "Rate limit for order creation endpoint (requests per minute per IP)",
+      "required": false
+    },
+    "RATE_LIMIT_WEBHOOK_PER_MINUTE": {
+      "description": "Rate limit for webhook endpoint (requests per minute)",
+      "required": false
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://js.stripe.com; frame-src https://js.stripe.com; connect-src 'self' https://api.stripe.com"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "memory": 512,
+      "maxDuration": 30
+    }
+  }
+}
